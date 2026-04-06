@@ -1,0 +1,322 @@
+:root {
+  color: #181414;
+  font-family: 'Trebuchet MS', 'Avenir Next', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(240, 208, 159, 0.24), transparent 24%),
+    linear-gradient(180deg, #f8f2e8 0%, #efe6d8 100%);
+  color: #181414;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.app-backdrop {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at right 20%, rgba(255, 255, 255, 0.55), transparent 30%),
+    linear-gradient(135deg, rgba(22, 22, 22, 0.04), transparent 50%);
+  pointer-events: none;
+}
+
+.app-content {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, calc(100vw - 2rem));
+  margin: 0 auto;
+  padding: 2.5rem 0 3rem;
+}
+
+.hero-copy {
+  max-width: 720px;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.76rem;
+  color: #6c5842;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.6rem, 5vw, 4.5rem);
+  line-height: 0.98;
+  max-width: 10ch;
+}
+
+.hero-body {
+  max-width: 52ch;
+  margin: 1rem 0 0;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: rgba(24, 20, 20, 0.78);
+}
+
+.recorder-panel {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.stage-card {
+  position: relative;
+  width: 100%;
+  border: 5px solid #111;
+  border-radius: 1.35rem;
+  background: rgba(255, 250, 241, 0.92);
+  box-shadow: 0 28px 70px rgba(46, 31, 16, 0.17);
+}
+
+.stage-surface {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 246, 230, 0.82)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(120, 96, 62, 0.06),
+      rgba(120, 96, 62, 0.06) 1px,
+      transparent 1px,
+      transparent 88px
+    );
+}
+
+.stage-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #f6eee0;
+}
+
+.stage-placeholder {
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.stage-placeholder-tag {
+  justify-self: center;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 17, 17, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+}
+
+.stage-placeholder h2 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.stage-placeholder p {
+  max-width: 34rem;
+  margin: 0 auto;
+  color: rgba(24, 20, 20, 0.76);
+  line-height: 1.6;
+}
+
+.camera-overlay {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 4px solid #111;
+  background:
+    linear-gradient(145deg, rgba(255, 252, 247, 0.95), rgba(233, 222, 204, 0.9));
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
+  cursor: grab;
+  touch-action: none;
+}
+
+.camera-overlay:active {
+  cursor: grabbing;
+}
+
+.camera-video,
+.camera-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.camera-video {
+  object-fit: cover;
+}
+
+.camera-placeholder {
+  display: grid;
+  place-items: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.camera-resize {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  width: 1.05rem;
+  height: 1.05rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #111;
+  box-shadow: 0 0 0 3px rgba(255, 250, 241, 0.88);
+  cursor: nwse-resize;
+}
+
+.control-bar {
+  display: grid;
+  gap: 1rem;
+  padding: 1.15rem 1.25rem 1.35rem;
+  border-radius: 1.4rem;
+  background: rgba(255, 249, 239, 0.82);
+  border: 1px solid rgba(23, 18, 12, 0.08);
+  box-shadow: 0 16px 32px rgba(46, 31, 16, 0.08);
+}
+
+.control-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.primary-button,
+.secondary-button,
+.toggle-button {
+  border-radius: 999px;
+  padding: 0.9rem 1.25rem;
+  border: 1px solid transparent;
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.primary-button {
+  background: #111;
+  color: #fff8ed;
+}
+
+.secondary-button {
+  background: rgba(17, 17, 17, 0.08);
+  color: #181414;
+}
+
+.toggle-button {
+  background: rgba(255, 255, 255, 0.76);
+  border-color: rgba(17, 17, 17, 0.14);
+  color: #181414;
+}
+
+.toggle-button[aria-pressed='true'] {
+  background: rgba(204, 162, 95, 0.22);
+  border-color: rgba(148, 104, 33, 0.38);
+}
+
+.primary-button:hover:not(:disabled),
+.secondary-button:hover:not(:disabled),
+.toggle-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.primary-button:disabled,
+.secondary-button:disabled,
+.toggle-button:disabled {
+  opacity: 0.46;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.status-panel {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.status-chip {
+  justify-self: start;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.status-idle {
+  background: rgba(61, 61, 61, 0.08);
+}
+
+.status-requesting_permissions {
+  background: rgba(205, 148, 37, 0.18);
+}
+
+.status-recording {
+  background: rgba(188, 62, 45, 0.18);
+}
+
+.status-stopping {
+  background: rgba(90, 108, 138, 0.18);
+}
+
+.status-recorded {
+  background: rgba(57, 126, 86, 0.18);
+}
+
+.status-error {
+  background: rgba(188, 62, 45, 0.14);
+}
+
+.status-message,
+.status-error {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.status-message {
+  color: rgba(24, 20, 20, 0.78);
+}
+
+.status-error {
+  color: #912f26;
+}
+
+@media (max-width: 720px) {
+  .app-content {
+    width: min(100vw - 1rem, 100%);
+    padding: 1.4rem 0 2rem;
+  }
+
+  .hero-copy {
+    margin-bottom: 1.25rem;
+  }
+
+  .control-bar {
+    padding: 1rem;
+  }
+}

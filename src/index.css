@@ -1,0 +1,8 @@
+html {
+  color-scheme: light;
+}
+
+body,
+#root {
+  min-height: 100vh;
+}
